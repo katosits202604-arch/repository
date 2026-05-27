@@ -14,7 +14,6 @@
 				
 			<p>
 				<span th:each="error:${#fields.detailedErrors()}">
-					<span th:text="${error.message}"></span><br />
 				</span>
 			</p>
 
@@ -23,12 +22,14 @@
 				<div class="input">
 					<input type="password" th:field="*{empPass}" />
 				</div>
+				<span th:errors="*{empPass}"></span>
 			</div>
 			<div class="form">
 				<div class="label">社員名：</div>
 				<div class="input">
 					<input type="text" th:field="*{empName}" />
 				</div>
+				<span th:errors="*{empName}"></span>
 			</div>
 			<div class="form">
 				<div class="label">性別：</div>
@@ -42,12 +43,14 @@
 				<div class="input">
 					<input type="text" th:field="*{address}" />
 				</div>
+				<span th:errors="*{address}"></span>
 			</div>
 			<div class="form">
 				<div class="label">生年月日：</div>
 				<div class="input">
 					<input type="text" th:field="*{birthday}" /> (YYYY/MM/DD)
 				</div>
+				<span th:errors="*{address}"></span>
 			</div>
 			<div class="form">
 				<div class="label">権限：</div>

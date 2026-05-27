@@ -3,13 +3,22 @@ package jp.co.sss.crud.form;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class LoginForm {
 	
-	/** 社員ID */
+	/** 社員ID
+	 *  未入力チェック・桁数チェック（5桁以内）
+	 */
+	@NotNull
+	@Max(value=99999)
 	private Integer empId;
 
-	/** パスワード */
+	/** パスワード 
+	 * 未入力チェック・パターンチェック（半角英数字）
+	 */
+	@NotBlank
+	@Pattern(regexp="^[a-zA-Z0-9]+$")
 	private String empPass;
 
 	/**

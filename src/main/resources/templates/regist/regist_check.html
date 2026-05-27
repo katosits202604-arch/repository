@@ -8,7 +8,6 @@
 
 <body class="admin user_regist_check_admin">
 	<h3>社員登録確認画面</h3>
-	 <!-- class名とボタンの変更は行なわないこと。-->
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -23,6 +22,7 @@
 			<div class="input" th:switch="${employeeForm.gender}">
 				<span th:case="1">男性</span>
 				<span th:case="2">女性</span>
+<!--			 1の時は男性、2の時は女性になるように指定-->
 			</div>
 		</div>
 		<div class="form">
@@ -31,18 +31,25 @@
 		</div>
 		<div class="form">
 			<div class="label">生年月日：</div>
-			<div class="input" th:text="${employeeForm.birthday}"></div>
+			<div class="input" th:text="${#dates.format(employeeForm.birthday, 'yyyy/MM/dd')}"></div>
+<!--			 yyyy/MM/ddの形を指定-->
 		</div>
 		<div class="form">
 			<div class="label">権限：</div>
 			<div class="input" th:switch="${employeeForm.authority}">
 				<span th:case="1">一般</span>
 				<span th:case="2">管理者</span>
+<!--			 1の時は一般、2の時は管理者になるように指定-->
 			</div>
 		</div>
 		<div class="form">
 			<div class="label">部署名：</div>
-			<div class="input" th:text="${employeeForm.deptId}"></div>
+			<div class="input" th:switch="${employeeForm.deptId}">
+				<span th:case="1">営業部</span>
+				<span th:case="2">経理部</span>
+				<span th:case="3">総務部</span>
+<!--			 1の時は営業部、2の時は経理部、3の時は総務部になるように指定-->
+			</div>
 		</div>
 		<form th:action="@{/regist/complete}" method="post" th:object="${employeeForm}">
 			<div class="form">

@@ -23,7 +23,7 @@
 		<p class="back_to_top_message">該当する社員は存在しません。</p>
 	<!--以下に一覧表示に戻るリンクを記述する -->
 		<p class="back_to_top_link">
-			<a th:href="@{/list}">一覧表に戻る</a>
+			<a th:href="@{/list}">一覧表示に戻る</a>
 		</p>
 		</div>
 	</th:block>
@@ -55,12 +55,14 @@
 			
 			
 			<td th:text="${list.address}"></td>
+			
 			<td th:text="${#dates.format(list.birthday, 'yyyy/MM/dd')}"></td>
 
 			<td th:switch="${list.authority}">
 				<span th:case="1">一般</span>
 				<span th:case="2">管理者</span>
 			</td>
+			
 			<td th:text="${list.department.deptName}"></td>
 		</tr>
 		

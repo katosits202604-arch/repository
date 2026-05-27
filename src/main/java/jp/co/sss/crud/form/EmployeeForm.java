@@ -4,25 +4,36 @@ import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class EmployeeForm {
 	/** 社員ID */
 	private Integer empId;
 
-	/** パスワード */
+	/** パスワード 
+	 * 未入力チェック、文字数チェック、パターンチェック
+	 *  */
+	@NotBlank
+	@Size(min=1,max=16)
+	@Pattern(regexp="^[a-zA-Z0-9]+$")
 	private String empPass;
 
 	/** 社員名 */
+	@NotBlank
+	@Size(min=1,max=30)
 	private String empName;
 
 	/** 性別 */
 	private Integer gender;
 
 	/** 住所 */
+	@NotBlank
+	@Size(min=1,max=60)
 	private String address;
 
 	/** 生年月日 */
+	@NotNull
 	private Date birthday;
 
 	/** 権限 */
